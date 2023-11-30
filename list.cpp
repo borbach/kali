@@ -15,6 +15,7 @@ using namespace std;
 bool debug = false;
 bool output = false;
 long lookups = 0;
+long entries = 0;
 
 struct Node {
   string name;
@@ -63,6 +64,7 @@ class DoublyLinkedList {
       tail->next = newNode;
       tail = newNode;
     }
+    entries++;
     if( debug )
     	cout << "Added Node: " << countNodes() << endl;
   }
@@ -169,12 +171,17 @@ class DoublyLinkedList {
 
     ofstream outfile;
     outfile.open( "data.sav" );
+    int i = 0;
 
     while (current) {
-      outfile << current->name << endl << current->id << endl << current->data << endl;
-      //outfile << current->id << endl;
-      //outfile << current->data <<  endl;
+      //outfile << current->name << endl << current->id << endl << current->data << endl;
+      outfile << current->name << endl;
+      outfile << current->id << endl;
+      outfile << current->data <<  endl;
       current = current->next;
+      i++;
+      if(!(i % 100000 )) 
+	      cout << "." << std::flush;
     }
     outfile.close();
  }
@@ -321,8 +328,9 @@ int main() {
 	stop = high_resolution_clock::now();
 	time_span = duration_cast<duration<double>>( stop - start );
     	cout << "\033[31m" << endl;
-	cout <<  "Time taken: " << time_span.count() << endl;
+	cout <<  "Time taken: " << time_span.count() << " seconds" << endl;
 	cout << "Lookups: " << lookups << endl;
+	cout << "Total Entries: " << entries << endl;
 	if( temp )
 		cout << temp->name << "    "  << temp->id << "     " << temp->data << endl;
 	else
@@ -339,8 +347,9 @@ int main() {
 	stop = high_resolution_clock::now();
 	time_span = duration_cast<duration<double>>( stop - start );
     	cout << "\033[31m" << endl;
-	cout <<  "Time taken: " << time_span.count() << endl;
+	cout <<  "Time taken: " << time_span.count() << " seconds" << endl;
 	cout << "Lookups: " << lookups << endl;
+	cout << "Total Entries: " << entries << endl;
 	if( temp )
 		cout << temp->name << "    "  << temp->id << "     " << temp->data << endl;
 	else
@@ -354,7 +363,15 @@ int main() {
         break;
 
       case 7:
+	start = high_resolution_clock::now();
         list.saveToFile();
+	stop = high_resolution_clock::now();
+	time_span = duration_cast<duration<double>>( stop - start );
+    	cout << "\033[31m" << endl;
+	cout <<  "Time taken: " << time_span.count() << " seconds" << endl;
+	cout << "Total Entries: " << entries << endl;
+        cout << "\033[0m" << endl;
+	output = true;
         //list.saveToCSVFile();
         break;
 
