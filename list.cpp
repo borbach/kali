@@ -3,6 +3,7 @@
 #include <string>
 #include <chrono>
 #include <iomanip>
+#include <sstream>
 
 using namespace std::chrono;
 using namespace std::chrono_literals;
@@ -24,6 +25,23 @@ struct Node {
   Node* next;
   Node* prev;
 };
+
+std::string addCommasToNumber(long long number) {
+    std::stringstream ss;
+    ss << std::fixed << std::setprecision(0) << number; // Set precision to 0 to avoid decimal places
+
+    std::string numberWithCommas = ss.str();
+
+    int len = numberWithCommas.length();
+
+    // Add commas to the number
+    for (int i = len - 3; i > 0; i -= 3) {
+        numberWithCommas.insert(i, ",");
+    }
+
+    return numberWithCommas;
+}
+
 
 class DoublyLinkedList {
   private:
@@ -160,7 +178,7 @@ class DoublyLinkedList {
     cout << "End of List"  <<  endl;
     cout <<  endl;
     cout << "\033[31m" << endl;
-    cout << "List has " << countNodes() << " entries." << endl;
+    cout << "List has " << addCommasToNumber( entries ) << " entries." << endl;
     cout << "\033[0m" << endl;
     cout <<  endl;
  }
@@ -180,7 +198,7 @@ class DoublyLinkedList {
       outfile << current->data <<  endl;
       current = current->next;
       i++;
-      if(!(i % 100000 )) 
+      if(!(i % 50000 )) 
 	      cout << "." << std::flush;
     }
     outfile.close();
@@ -329,8 +347,8 @@ int main() {
 	time_span = duration_cast<duration<double>>( stop - start );
     	cout << "\033[31m" << endl;
 	cout <<  "Time taken: " << time_span.count() << " seconds" << endl;
-	cout << "Lookups: " << lookups << endl;
-	cout << "Total Entries: " << entries << endl;
+	cout << "Lookups: " << addCommasToNumber( lookups )   << endl;
+	cout << "Total Entries: " << addCommasToNumber( entries ) << endl;
 	if( temp )
 		cout << temp->name << "    "  << temp->id << "     " << temp->data << endl;
 	else
@@ -348,8 +366,8 @@ int main() {
 	time_span = duration_cast<duration<double>>( stop - start );
     	cout << "\033[31m" << endl;
 	cout <<  "Time taken: " << time_span.count() << " seconds" << endl;
-	cout << "Lookups: " << lookups << endl;
-	cout << "Total Entries: " << entries << endl;
+	cout << "Lookups: " << addCommasToNumber( lookups ) << endl;
+	cout << "Total Entries: " << addCommasToNumber( entries ) << endl;
 	if( temp )
 		cout << temp->name << "    "  << temp->id << "     " << temp->data << endl;
 	else
@@ -369,7 +387,7 @@ int main() {
 	time_span = duration_cast<duration<double>>( stop - start );
     	cout << "\033[31m" << endl;
 	cout <<  "Time taken: " << time_span.count() << " seconds" << endl;
-	cout << "Total Entries: " << entries << endl;
+	cout << "Total Entries: " << addCommasToNumber( entries ) << endl;
         cout << "\033[0m" << endl;
 	output = true;
         //list.saveToCSVFile();

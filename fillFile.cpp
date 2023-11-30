@@ -12,7 +12,7 @@ int main() {
     }
 
     // Write a sequence of numbers to the file
-    for (int i = 1; i <= 1000000; ++i) {
+    for (int i = 1; i <= 100000; ++i) {
         outputFile << i << std::endl;
     }
 
