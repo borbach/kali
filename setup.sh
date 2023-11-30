@@ -27,5 +27,5 @@ sudo apt update
 sudo apt --fix-broken install
 sudo apt install -y numlockx
 numlockx on
-
+sudo usermod -aG audio kali
 
