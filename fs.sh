@@ -23,4 +23,6 @@ sudo fdisk -l
 lsblk -f
 blkid
 lsmod | grep sd
+fsck /dev/mmcblk0
+sudo smartctl -a /dev/mmcblk0
 
