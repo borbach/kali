@@ -4,6 +4,8 @@
 #include <chrono>
 #include <iomanip>
 #include <sstream>
+#include <sys/resource.h>
+#include <sys/time.h>
 
 using namespace std::chrono;
 using namespace std::chrono_literals;
@@ -17,6 +19,44 @@ bool debug = false;
 bool output = false;
 long lookups = 0;
 long entries = 0;
+
+// Function to get CPU usage
+double get_cpu_usage() {
+    std::ifstream file("/proc/self/stat");
+    std::string line;
+    std::getline(file, line);
+    std::istringstream iss(line);
+    
+    // Extracting utime (user time) and stime (system time) from /proc/self/stat
+    long utime, stime;
+    for (int i = 1; i <= 13; ++i) {
+        iss.ignore();
+    }
+    iss >> utime >> stime;
+
+    // Calculating total time
+    long total_time = utime + stime;
+
+    // Getting total elapsed time
+    struct timeval tv;
+    gettimeofday(&tv, nullptr);
+    long total_elapsed_time = (tv.tv_sec * 1000 + tv.tv_usec / 1000);
+
+    // Calculating CPU usage percentage
+    double cpu_usage = 100.0 * total_time / total_elapsed_time;
+
+    return cpu_usage;
+}
+
+// Function to get memory usage
+long get_memory_usage() {
+    struct rusage usage;
+    if (getrusage(RUSAGE_SELF, &usage) == 0) {
+        return usage.ru_maxrss; // Max resident set size in kilobytes
+    }
+    return -1;
+}
+
 
 struct Node {
   string name;
@@ -258,6 +298,12 @@ int main() {
   high_resolution_clock::time_point  stop;
   duration<double> time_span;
   std::cout << std::fixed << std::showpoint << std::setprecision(5);
+  long initial_memory = 0;
+  double initial_cpu = 0.0;
+  long final_memory = 0;
+  double final_cpu = 0.0;
+  long memory_usage_diff = 0;
+  double cpu_usage_diff = 0.0;
 
   while (true) {
     if( counter >= 7 )
@@ -323,28 +369,67 @@ int main() {
        	cin >> id;
         cout << "Enter data to add: ";
         cin >> data;
+	initial_memory = get_memory_usage();
+	initial_cpu = get_cpu_usage();
         list.addNode(name,id,data);
+	final_memory = get_memory_usage();
+        final_cpu = get_cpu_usage();
+	memory_usage_diff = final_memory - initial_memory;
+	cpu_usage_diff = final_cpu - initial_cpu;
+    	cout << "\033[31m" << endl;
+        cout << "Memory Usage: " << memory_usage_diff << " KB" << std::endl;
+        cout << "CPU Usage: " << cpu_usage_diff << "%" << std::endl;
+        cout << "\033[0m" << endl;
+	output = true;
         break;
 
       case 2:
         cout << "Enter name to remove: ";
         cin >> name;
+	initial_memory = get_memory_usage();
+	initial_cpu = get_cpu_usage();
         list.deleteNodeByName(name);
+	final_memory = get_memory_usage();
+        final_cpu = get_cpu_usage();
+	memory_usage_diff = final_memory - initial_memory;
+	cpu_usage_diff = final_cpu - initial_cpu;
+    	cout << "\033[31m" << endl;
+        cout << "Memory Usage: " << memory_usage_diff << " KB" << std::endl;
+        cout << "CPU Usage: " << cpu_usage_diff << "%" << std::endl;
+        cout << "\033[0m" << endl;
+	output = true;
        	break;
 
       case 3:
         cout << "Enter id to remove: ";
         cin >> id;
+	initial_memory = get_memory_usage();
+	initial_cpu = get_cpu_usage();
         list.deleteNodeById(id);
+	final_memory = get_memory_usage();
+        final_cpu = get_cpu_usage();
+	memory_usage_diff = final_memory - initial_memory;
+	cpu_usage_diff = final_cpu - initial_cpu;
+    	cout << "\033[31m" << endl;
+        cout << "Memory Usage: " << memory_usage_diff << " KB" << std::endl;
+        cout << "CPU Usage: " << cpu_usage_diff << "%" << std::endl;
+        cout << "\033[0m" << endl;
+	output = true;
        	break;
 
       case 4:
         cout << "Enter name to find: ";
         cin >> name;
+	initial_memory = get_memory_usage();
+	initial_cpu = get_cpu_usage();
 	start = high_resolution_clock::now();
         temp = list.findNodeByName(name);
 	stop = high_resolution_clock::now();
 	time_span = duration_cast<duration<double>>( stop - start );
+	final_memory = get_memory_usage();
+        final_cpu = get_cpu_usage();
+	memory_usage_diff = final_memory - initial_memory;
+	cpu_usage_diff = final_cpu - initial_cpu;
     	cout << "\033[31m" << endl;
 	cout <<  "Time taken: " << time_span.count() << " seconds" << endl;
 	cout << "Lookups: " << addCommasToNumber( lookups )   << endl;
@@ -353,6 +438,8 @@ int main() {
 		cout << temp->name << "    "  << temp->id << "     " << temp->data << endl;
 	else
 		cout << "Unable to find node" << endl;
+        cout << "Memory Usage: " << memory_usage_diff << " KB" << std::endl;
+        cout << "CPU Usage: " << cpu_usage_diff << "%" << std::endl;
         cout << "\033[0m" << endl;
 	output = true;
        	break;
@@ -360,10 +447,16 @@ int main() {
       case 5:
         cout << "Enter id to find: ";
         cin >> id;
+	initial_memory = get_memory_usage();
+	initial_cpu = get_cpu_usage();
 	start = high_resolution_clock::now();
         temp = list.findNodeById(id);
 	stop = high_resolution_clock::now();
 	time_span = duration_cast<duration<double>>( stop - start );
+	final_memory = get_memory_usage();
+        final_cpu = get_cpu_usage();
+	memory_usage_diff = final_memory - initial_memory;
+	cpu_usage_diff = final_cpu - initial_cpu;
     	cout << "\033[31m" << endl;
 	cout <<  "Time taken: " << time_span.count() << " seconds" << endl;
 	cout << "Lookups: " << addCommasToNumber( lookups ) << endl;
@@ -372,29 +465,61 @@ int main() {
 		cout << temp->name << "    "  << temp->id << "     " << temp->data << endl;
 	else
 		cout << "Unable to find node" << endl;
+        cout << "Memory Usage: " << memory_usage_diff << " KB" << std::endl;
+        cout << "CPU Usage: " << cpu_usage_diff << "%" << std::endl;
         cout << "\033[0m" << endl;
 	output = true;
        	break;
 
       case 6:
+	initial_memory = get_memory_usage();
+	initial_cpu = get_cpu_usage();
         list.printList();
+	final_memory = get_memory_usage();
+        final_cpu = get_cpu_usage();
+	memory_usage_diff = final_memory - initial_memory;
+	cpu_usage_diff = final_cpu - initial_cpu;
+    	cout << "\033[31m" << endl;
+        cout << "Memory Usage: " << memory_usage_diff << " KB" << std::endl;
+        cout << "CPU Usage: " << cpu_usage_diff << "%" << std::endl;
+        cout << "\033[0m" << endl;
+	output = true;
         break;
 
       case 7:
+	initial_memory = get_memory_usage();
+	initial_cpu = get_cpu_usage();
 	start = high_resolution_clock::now();
         list.saveToFile();
 	stop = high_resolution_clock::now();
 	time_span = duration_cast<duration<double>>( stop - start );
+	final_memory = get_memory_usage();
+        final_cpu = get_cpu_usage();
+	memory_usage_diff = final_memory - initial_memory;
+	cpu_usage_diff = final_cpu - initial_cpu;
     	cout << "\033[31m" << endl;
 	cout <<  "Time taken: " << time_span.count() << " seconds" << endl;
 	cout << "Total Entries: " << addCommasToNumber( entries ) << endl;
+        cout << "Memory Usage: " << memory_usage_diff << " KB" << std::endl;
+        cout << "CPU Usage: " << cpu_usage_diff << "%" << std::endl;
         cout << "\033[0m" << endl;
 	output = true;
         //list.saveToCSVFile();
         break;
 
       case 8:
+	initial_memory = get_memory_usage();
+	initial_cpu = get_cpu_usage();
         list.readFromFile();
+	final_memory = get_memory_usage();
+        final_cpu = get_cpu_usage();
+	memory_usage_diff = final_memory - initial_memory;
+	cpu_usage_diff = final_cpu - initial_cpu;
+    	cout << "\033[31m" << endl;
+        cout << "Memory Usage: " << memory_usage_diff << " KB" << std::endl;
+        cout << "CPU Usage: " << cpu_usage_diff << "%" << std::endl;
+        cout << "\033[0m" << endl;
+	output = true;
         break;
 
       case 9:
