@@ -159,7 +159,7 @@ class DoublyLinkedList {
 
   void printList() {
     Node* current = head;
-    long i = 1;
+    long i = 0;
 
     output = true;
     cout << "\033[34m" << endl;
@@ -168,7 +168,7 @@ class DoublyLinkedList {
     cout << "=====================================================================" <<  endl;
 
     while (current) {
-      cout << i++ << ":->  ";
+      cout << ++i << ":->  ";
       cout << current->name << " |  ";
       cout << current->id << " |  ";
       cout << current->data << " |  ";
