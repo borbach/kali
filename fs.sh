@@ -18,3 +18,9 @@ cd /home
 sudo mv kali kali1
 sudo ln -s /mnt/sd3/home/kali kali
 
+dmesg
+sudo fdisk -l
+lsblk -f
+blkid
+lsmod | grep sd
+
