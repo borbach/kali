@@ -159,6 +159,7 @@ class DoublyLinkedList {
 
   void printList() {
     Node* current = head;
+    long i = 1;
 
     output = true;
     cout << "\033[34m" << endl;
@@ -167,6 +168,7 @@ class DoublyLinkedList {
     cout << "=====================================================================" <<  endl;
 
     while (current) {
+      cout << i++ << ":->  ";
       cout << current->name << " |  ";
       cout << current->id << " |  ";
       cout << current->data << " |  ";
@@ -185,7 +187,6 @@ class DoublyLinkedList {
 
   void saveToFile() {
     Node* current = head;
-    string dat;
 
     ofstream outfile;
     outfile.open( "data.sav" );
@@ -206,7 +207,6 @@ class DoublyLinkedList {
 
   void saveToCSVFile() {
     Node* current = head;
-    string dat;
 
     ofstream outfile;
     outfile.open( "data.csv" );
