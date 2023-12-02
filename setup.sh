@@ -26,6 +26,7 @@ sudo  echo "deb http://http.kali.org/kali kali-rolling main non-free contrib" > 
 sudo apt update
 sudo apt --fix-broken install
 sudo apt install -y numlockx
+sudo apt install -y  alsa-utils
 numlockx on
 sudo usermod -aG audio kali
 
