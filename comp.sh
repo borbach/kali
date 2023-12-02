@@ -28,8 +28,7 @@ for file1 in $text_files1; do
     if [ -e "$file2" ]; then
         # Compare the contents of the text files
 	if cmp -s "$file1" "$file2" ; then
-#            echo "File '$relative_path' exists in both directories and has the same content."
-             echo "."
+		:
         else
             echo "File '$relative_path' exists in both directories but has different content."
         fi
