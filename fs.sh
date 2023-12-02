@@ -2,7 +2,7 @@ sudo fdisk --wipe=never -t dos /dev/sda
 #then p
 #then n and create partition 3 as primary
 #then w
-sudo mkfs.ntfs /dev/sda3
+sudo mkfs.ext3 /dev/sda3
 #sudo mkfs.exfat /dev/sda3
 #then create a subdirectory off /mnt like sd3
 #
