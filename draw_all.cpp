@@ -1,5 +1,9 @@
 #include <ncurses.h>
 
+//compile with:
+//g++ -o draw_all draw_all.cpp -lncurses
+
+
 void drawCat(int y, int x) {
     mvprintw(y, x, " /\\_/\\ ");
     mvprintw(y + 1, x, "( o.o )");

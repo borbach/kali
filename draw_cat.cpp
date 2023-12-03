@@ -1,5 +1,9 @@
 #include <ncurses.h>
 
+//compile with command:
+//g++ -o draw_cat draw_cat.cpp -lncurses
+
+
 int main() {
     // Initialize ncurses
     initscr();
