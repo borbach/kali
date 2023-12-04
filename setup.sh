@@ -1,3 +1,15 @@
+#If you get into ddeveloper mode you can gt the crosh shell by pressing 
+#CTRL-ALT-T for the crsh shell and then type shell
+#Alternatively for the VT-2 shell you can press
+#CTRL_ALT and refresh. To get back to chrome, you can press
+#CTRL_ALT =left arrow on the top keyboard (F1 Key).
+#You will need to download the file firmware-util.sh from mrchromebox.tech
+#as follows:
+#cd; curl -LOk mrchromebox.tech/firmware-util.sh && sudo bash firmware-util.sh
+#and then follow the instructions to flash the firmware.
+#On the Asus!$ when booting it up, press CTRL-L and then any nnumber.
+#Then pick the USAB drive from the menu
+#
 #first do cd mnt
 #sudo mkdir sd
 #cd sd
