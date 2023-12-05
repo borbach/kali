@@ -6,6 +6,10 @@ lsmod
 lspci
 lscpu
 lsof
+lspci -k | grep -A 3 Audio
+aplay -L
+pulseaudio
+pavucontrol
 
 
 
