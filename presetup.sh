@@ -21,5 +21,9 @@ efiboptmgr
 sudo apt install grub-efi
 #This will modift the /boot/efi/EFI/BOOT/BOOTX64.EFI
 #As weil as the /boot/efi/EFI/kali/grubx64.efi
+#To change the boot order sudo efibootmgr -o 0002 to put entry 2 first
+#sudo efibootmgr -b 0001 -B to delete entry 0001
+#You must also then use sudo update-grub to update grub
+#
 #
 
