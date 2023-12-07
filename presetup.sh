@@ -26,4 +26,11 @@ sudo apt install grub-efi
 #You must also then use sudo update-grub to update grub
 #
 #
-
+#To generate grub:
+#gdisk /dev/sda
+#mkfs.exfat /dev/sda
+#gpartd to make firrst partition bootable
+#grub-install /dev/sda
+#update-grub
+#
+#
