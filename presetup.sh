@@ -119,7 +119,14 @@ GRUB_DISABLE_OS_PROBER=false
 #scii.h    default   grub-mkconfig_lib  unicode.pf2
 #ascii.pf2  euro.pf2  themes             widthspec.h
                                             
-                                      
+#The /boot directory looks like this:
+#System.map-6.3.0-kali1-amd64  initrd.img-6.3.0-kali1-amd64
+config-6.3.0-kali1-amd64      lost+found
+efi                           vmlinuz-6.3.0-kali1-amd64
+grub
+
+
+
 
 
 
