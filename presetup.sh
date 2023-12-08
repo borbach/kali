@@ -125,7 +125,9 @@ config-6.3.0-kali1-amd64      lost+found
 efi                           vmlinuz-6.3.0-kali1-amd64
 grub
 
-
+#You caan run ldd to get file dependencies for an executable script
+#For example ldd /usr/bin/zsh
+#
 
 
 
