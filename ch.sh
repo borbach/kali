@@ -8,6 +8,7 @@ cp -v /bin/bash $chr/bin
 cp -v /bin/touch $chr/bin
 cp -v /bin/ls $chr/bin
 cp -v /bin/rm $chr/bin
+cp -v /bin/find $chr/bin
 list="$(ldd /bin/bash | egrep -o '/lib.*\.[0-9]')"
 echo $list
 for i in $list; do cp -v --parents "$i" "${chr}"; done
@@ -16,5 +17,7 @@ for i in $list; do cp -v --parents "$i" "${chr}"; done
 list="$(ldd /bin/ls | egrep -o '/lib.*\.[0-9]')"
 for i in $list; do cp -v --parents "$i" "${chr}"; done
 list="$(ldd /bin/ls | egrep -o '/lib.*\.[0-9]')"
+for i in $list; do cp -v --parents "$i" "${chr}"; done
+list="$(ldd /bin/find | egrep -o '/lib.*\.[0-9]')"
 for i in $list; do cp -v --parents "$i" "${chr}"; done
 sudo chroot $chr /bin/bash
