@@ -19,18 +19,13 @@ menuentry "Kali Linux from ChatGPT" {
       
  #For UEFI systems
    if [ -d /sys/firmware/efi ]; then 
-  	linux /boot/vmlinuz-6.3.0-kali1-amd64
+  	linux /boot/vmlinuz-6.3.0-kali1-amd64 root=/dev/mapper/asus16--vg-root ro single
   	initrd /boot/initrd.img-6.3.0-kali-amd64
    else
 #For BIOS Systems
-  	linux /boot/vmlinuz-6.3.0-kali1-amd64
+  	linux /boot/vmlinuz-6.3.0-kali1-amd64 root=/dev/mapper/asus16--vg-root ro single
   	initrd /boot/initrd.img-6.3.0-kali-amd64
    fi 
 }
 
 
-menuentry "Kali Linux from Bill" {
-  search --set=root --file=/boot/vmlinuz-6.3.0-kali1-amd64
-  linux /boot/vmlinuz-6.3.0-kali1-amd64
-  initrd /boot/initrd.img-6.3.0-kali-amd64
-}
