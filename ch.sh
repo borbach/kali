@@ -57,6 +57,7 @@ cp -r -v /usr/share/grub $chr/usr/share/grub/
 #mkdir $chr/etc
 cp -r -v /dev/ $chr/dev/
 cp -r -v /etc/ $chr/etc/
+sudo chmod 777 /etc/grub.d/*
 
 mkdir $chr/sys
 mkdir $chr/sys/firmware
