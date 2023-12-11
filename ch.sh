@@ -24,6 +24,10 @@ cp -v /bin/find $chr/bin
 list="$(ldd /bin/find | egrep -o '/lib.*\.[0-9]')"
 echo $list
 for i in $list; do cp -v --parents "$i" "${chr}"; done
+cp -v /bin/grep $chr/bin
+list="$(ldd /bin/grep | egrep -o '/lib.*\.[0-9]')"
+echo $list
+for i in $list; do cp -v --parents "$i" "${chr}"; done
 cp -v /usr/sbin/grub-install $chr/bin
 list="$(ldd /usr/sbin/grub-install | egrep -o '/lib.*\.[0-9]')"
 echo $list
@@ -51,10 +55,11 @@ mkdir $chr/usr/share
 cp -r -v /usr/lib/grub $chr/usr/lib/grub/
 cp -r -v /usr/share/grub $chr/usr/share/grub/
 #mkdir $chr/etc
-mkdir $chr/dev
-mkdir $chr/dev/sys
-mkdir $chr/dev/sys/block
-cp -r -v /dev/sys/block/ $chr/dev/sys/block/
+cp -r -v /dev/ $chr/dev/
 cp -r -v /etc/ $chr/etc/
+
+mkdir $chr/sys
+mkdir $chr/sys/firmware
+cp -r -v /sys/firmware/efi $chr/sys/firmware/efi/
 
 sudo chroot $chr /bin/bash
