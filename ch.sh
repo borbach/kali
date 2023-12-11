@@ -36,4 +36,25 @@ cp -v /usr/sbin/grub-mkconfig $chr/bin
 list="$(ldd /usr/sbin/grub-mkconfig | egrep -o '/lib.*\.[0-9]')"
 echo $list
 for i in $list; do cp -v --parents "$i" "${chr}"; done
+cp -v /bin/df $chr/bin
+list="$(ldd /bin/df | egrep -o '/lib.*\.[0-9]')"
+echo $list
+for i in $list; do cp -v --parents "$i" "${chr}"; done
+cp -v /bin/lsblk $chr/bin
+list="$(ldd /bin/lsblk | egrep -o '/lib.*\.[0-9]')"
+echo $list
+for i in $list; do cp -v --parents "$i" "${chr}"; done
+cp -r -v /boot $chr
+mkdir $chr/usr
+mkdir $chr/usr/lib
+mkdir $chr/usr/share
+cp -r -v /usr/lib/grub $chr/usr/lib/grub/
+cp -r -v /usr/share/grub $chr/usr/share/grub/
+#mkdir $chr/etc
+mkdir $chr/dev
+mkdir $chr/dev/sys
+mkdir $chr/dev/sys/block
+cp -r -v /dev/sys/block/ $chr/dev/sys/block/
+cp -r -v /etc/ $chr/etc/
+
 sudo chroot $chr /bin/bash
