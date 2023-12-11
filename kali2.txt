@@ -1,0 +1,31 @@
+sudo nano /etc/grub.d/40_custom
+
+
+#!/bin/sh
+exec tail -n +3 $0
+
+menuentry "Kali Linux" {
+    search --set=root --file /kali-linux-is-installed-here
+
+    # Detect architecture (32-bit or 64-bit)
+    if [ "`uname -m`" = "x86_64" ]; then
+        set arch=x86_64
+    else
+        set arch=i386
+    fi
+
+    # For UEFI systems
+    if [ -d /sys/firmware/efi ]; then
+        linux /boot/vmlinuz root=UUID=<Your-Kali-UUID> ro quiet splash $arch
+        initrd /boot/initrd.img
+    else
+        # For BIOS systems
+        linux /vmlinuz root=UUID=<Your-Kali-UUID> ro quiet splash $arch
+        initrd /initrd.img
+    fi
+}
+
+
+sudo chmod +x /etc/grub.d/40_custom
+
+sudo update-grub

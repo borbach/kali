@@ -1,0 +1,25 @@
+create a grub.cfg file which will owrk with any computer to launch kali linux
+
+sudo nano /etc/grub.d/40_custom
+
+#!/bin/sh
+exec tail -n +3 $0
+
+menuentry "Kali Linux" {
+    search --set=root --file /kali-linux-is-installed-here
+
+    # For BIOS systems
+    if [ -d /sys/firmware/efi ]; then
+        linux /boot/vmlinuz root=UUID=<Your-Kali-UUID> ro
+        initrd /boot/initrd.img
+    else
+        # For UEFI systems
+        linux /vmlinuz root=UUID=<Your-Kali-UUID> ro
+        initrd /initrd.img
+    fi
+}
+
+
+sudo blkid
+sudo chmod +x /etc/grub.d/40_custom
+sudo update-grub
