@@ -1,2 +1,2 @@
 #!/bin/zsh
-sudo apt upgrade 2&>1 > /home/bill/upgrade.txt
+sudo apt upgrade -y  2&>1 > /home/bill/upgrade.txt
