@@ -1,0 +1,6 @@
+set pager=1
+set root=(hd0,1)
+linux /vmlinuz root=/dev/mapper/asus16--vg-root
+initrd /initrd.img
+boot
+
