@@ -14,4 +14,5 @@ UUID=535d47fb-00ce-4b6f-a694-6bfcdcf5b520 /boot           ext2    defaults      
 # /boot/efi was on /dev/mmcblk0p1 during installation
 UUID=8B66-5CD3  /boot/efi       vfat    umask=0077      0       1
 /dev/mapper/asus16--vg-swap_1 none            swap    sw              0       0
-UUID=62a9d9df-f151-4590-874c-04063f99acd8 /extra    ext4   defaults  0   2
+UUID=866a4d5a-b39f-4e82-bfe0-db628005e716  /extra   ext4  defaults   0      1
+ 
