@@ -6,13 +6,13 @@ fdisk -l
 sleep 10
 pvdisplay
 sleep 10
-pvcreate /dev/mmcblk1p6
+pvcreate /dev/mmcblk1p3
 sleep 10
 pvdisplay
 sleep 10
 vgdisplay | grep Name
 sleep 10
-vgextend asus14-vg /dev/mmcblk1p6
+vgextend asus14-vg /dev/mmcblk1p3
 sleep 10
 vgdisplay
 sleep 10
