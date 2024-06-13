@@ -6,6 +6,7 @@ linux	/vmlinuz-6.3.0-kali1-amd64 root=/dev/mapper/asus14--vg-root ro single snd_
 apt install pipewire-alsa
 
 for large mouse cursor
+must do this as user bill
 
 For large mouse cursor
 $ gsettings set org.gnome.desktop.interface cursor-size 96
