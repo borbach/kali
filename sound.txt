@@ -1,7 +1,11 @@
 in grub.cfg
 
 
-		linux	/vmlinuz-6.3.0-kali1-amd64 root=/dev/mapper/asus14--vg-root ro single snd_hda_intel.dmic_detect=0 
+linux	/vmlinuz-6.3.0-kali1-amd64 root=/dev/mapper/asus14--vg-root ro single snd_hda_intel.dmic_detect=0 
 
 apt install pipewire-alsa
 
+for large mouse cursor
+
+For large mouse cursor
+$ gsettings set org.gnome.desktop.interface cursor-size 96
