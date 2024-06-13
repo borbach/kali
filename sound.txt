@@ -13,3 +13,8 @@ must do this as user bill
 
 For large mouse cursor
 $ gsettings set org.gnome.desktop.interface cursor-size 96
+
+for touchpad
+sudo modprobe -r i2c_hid_acpi i2c_hid && sudo modprobe i2c_hid_acpi i2c_hid
+
+
