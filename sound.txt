@@ -3,7 +3,10 @@ in grub.cfg
 
 linux	/vmlinuz-6.3.0-kali1-amd64 root=/dev/mapper/asus14--vg-root ro single snd_hda_intel.dmic_detect=0 
 
-apt install pipewire-alsa
+sudo apt install pipewire-alsa
+sudo apt install --mark-auto -y pipewire-audio
+
+
 
 for large mouse cursor
 must do this as user bill
