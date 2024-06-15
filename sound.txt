@@ -21,6 +21,7 @@ pw-link
 pactl list | grep node.name
 aplay --list-devices 
 arecord --list-devices
+systemctl --user status pipewire.service pipewire.socket wireplumber
 
 
 
