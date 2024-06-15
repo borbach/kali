@@ -1,0 +1,8 @@
+xinput -list
+libinput measure
+sudo libinput measure touchpad-pressure --touch-thresholds=10:8 --palm-threshold=20
+
+apt install libinput-utils
+libinput record
+libinput measure touch-size
+
