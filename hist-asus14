@@ -1,0 +1,404 @@
+    1  passwd bill
+    2  shutdown -r now
+    3  apt install kali-backgrounds-all
+    4  apt install kali-background-all
+    5  apt install kali-wallpapers-all
+    6  df -h
+    7  shutdown -r now
+    8  df -h
+    9  lsblk
+   10  gdisk /dev/sdb
+   11  gparted
+   12  gdisk /dev/sdb
+   13  df -h /dev/dsb
+   14  df -h /dev/sdb
+   15  lsblk
+   16  shutdown -r now
+   17  lsblk
+   18  df -h 
+   19  gdisk /dev/sda
+   20  gparted /dev/sda
+   21  gdisk /dev/sda
+   22  shutdown -r now
+   23  df -h 
+   24  lsblk
+   25  fdisk /dev/sda
+   26  gdisk /dev/sda
+   27  shutdown -r now
+   28  df -h
+   29  cd Downloads
+   30  ls
+   31  rm *
+   32  ls
+   33  dpkg -i google-chrome-stable_current_amd64.deb
+   34  cd ..
+   35  vi extend14.sh
+   36  chmod 777 extend14.sh
+   37  ./extend14.sh
+   38  df -h
+   39  shutdown -r now
+   40  apt update
+   41  apt install -y kali-desktop-gnome
+   42  apt upgrade
+   43  shutdown -r now
+   44  apt update
+   45  apt install kali-desktop-gnome
+   46  shutdown -r now
+   47  apt install kali-desktop-gnome
+   48  apt autoremove
+   49  apt remove kali-desktop-gnome
+   50  apt install kali-desktop-gnome
+   51  dpkg-reconfigure gdm3
+   52  shutdown -r now
+   53  apt install libre-office
+   54  apt install libreoffice
+   55  exit
+   56  gsettings 
+   57  gsettings get org.gnome.desktop.interface cursor-size
+   58  gsettings set org.gnome.desktop.interface cursor-size 64
+   59  gsettings set org.gnome.desktop.interface cursor-size 96
+   60  gsettings get org.gnome.desktop.interface cursor-size
+   61  logoff
+   62  shutdown -r now
+   63  gsettings get org.gnome.desktop.interface cursor-size
+   64  apt install dconf-editor
+   65  dconf-editor
+   66  apt install gnome-tweaks
+   67  gnome-tweaks
+   68  dconf write /org/gnome/desktop/interface/cursor-size 96
+   69  dconf-editor
+   70  apt search cursor-teme
+   71  apt search cursor-theme
+   72  apt install breeze-cursor-theme
+   73  apt search cursor-theme
+   74  cd /
+   75  ls
+   76  gsettings get org.gnome.desktop.interface cursor-size
+   77  gsettings set org.cinnamon.desktop.interface cursor-size 100
+   78  xeyes &
+   79  aplay -L
+   80  aplay -l
+   81  cd /boot/grub
+   82  vi grub.cfg
+   83  shutdown -r now
+   84  xeyes &
+   85  aplay -l
+   86  cd desktop
+   87  cd Downloads
+   88  ls
+   89  apt install libreoffice
+   90  apt install gnome-shell-extensions-desktop-icons
+   91  cd ..
+   92  ls -lta
+   93  cat .xsessionrc
+   94  cat .zshrc
+   95  password for bill: 
+   96  gnome-tweaks
+   97  gsettings get org.gnome.desktop.interface cursor-size
+   98  gsettings set org.cinnamon.desktop.interface cursor-size 64
+   99  gsettings set org.gnome.desktop.interface cursor-size 96
+  100  gsettings get org.gnome.desktop.interface cursor-size
+  101  gsettings set org.gnome.desktop.interface cursor-size 64
+  102  gsettings get org.gnome.desktop.interface cursor-size
+  103  dconf-editor
+  104  gsettings set org.gnome.desktop.interface cursor-size 96
+  105  dconf-editor
+  106  gsettings get org.gnome.desktop.interface cursor-size
+  107  dconf-editor
+  108  su --shell /bin/bash --login gdm
+  109  users
+  110  cd /etc/dconf
+  111  cd profile
+  112  ls
+  113  cat ibus
+  114  vi gdm
+  115  cat gdm
+  116  cd /etc/dconf
+  117  cd db
+  118  ls
+  119  cat ibus
+  120  ls
+  121  cd ibus-d
+  122  cd ibus.d
+  123  ls
+  124  cd ..
+  125  mkdir gdm.d
+  126  cd gdm.d
+  127  vi 00-login-screen
+  128  shutdown -r now
+  129  users
+  130  cd /etc/dconf/db/gdm
+  131  cd /etc/dconf/db/gdm.d
+  132  ls
+  133  vi 00-login-screen
+  134  dconf update
+  135  logoff
+  136  logout
+  137  pkill
+  138  pkill bill
+  139  apt update
+  140  apt install -y firmware-sof-signed
+  141  vi .pulseaudio.conf
+  142  exit
+  143  cd /boot/grub
+  144  vi grub.conf
+  145  ls
+  146  vi grub.cfg
+  147  shutdown -r now
+  148  ls
+  149  find / -name xorg.conf
+  150  cd /usr/share/doc/xserver-xorg-video-intel/
+  151  ls
+  152  cat xorg.conf
+  153  sudo apt install xterminal
+  154  sudo apt install konsole
+  155  konsole
+  156  exit
+  157  apt install xserver-xorg-input-synaptics
+  158  xinput
+  159  apt install xserver-xorg-input-elan
+  160  shutdown -r now
+  161  xinput
+  162  exit
+  163  systemctl disable lighdm-plymouth
+  164  systemctl disable lighdm
+  165  systemctl disable sddm
+  166  systemctl enable gdm
+  167  shutdown -r now
+  168  systemctl enable gdm
+  169  apt install gdm
+  170  apt update
+  171  apt install kali-desktop-gnome
+  172  dpkg-reconfigure gdm3
+  173  shutdown -r now
+  174  \n\n\n
+  175  cat sound.txt
+  176  apt install indicator-multiload
+  177  apt install gnome-shell-extension-manager
+  178  apt install girl.2-gtop-2.0 girl.2-nm-1.0 girl.2-clutter-1.0 gnome-system-monitor
+  179  apt install gnome-system-monitor
+  180  apt install gnome-shell-extensions
+  181  shutdown -r now
+  182  cd /etc
+  183  cd apache2
+  184  ls
+  185  cp apache2.conf apache2.conf.orig
+  186  cd mods-available
+  187  ls
+  188  ls -lta
+  189  cd ..
+  190  ls
+  191  cd mods-enabled
+  192  ls
+  193  ls -lta
+  194  ln -s cgi.load ../mods-available/cgi.load
+  195  ln -s ../mods-available/cgi.load cgi.load
+  196  ls -lta
+  197  cd ..
+  198  ls -lta
+  199  diff apache2.conf apache2.conf.orig
+  200  cd /var/www/html
+  201  ls
+  202  cp index.html index.html.orig
+  203  tar xvf var-www-html.tar
+  204  ls -lta
+  205  cd /usr/lib/cgi-bin
+  206  ls
+  207  tar xvf usr-lib-cgi-bin.tar
+  208  systemctl start apache2.service
+  209  shutdown -r now
+  210  apt install chrome-gnome-shell
+  211  gnome-shell --version
+  212  cd /var/www
+  213  ls
+  214  cd html
+  215  ls
+  216  git fetch git://github.com/borbach/web.git/var-www-html.tar
+  217  cd 
+  218  gh repo clone borbach/web
+  219  gh auth login
+  220  cd Downloads
+  221  pwd
+  222  cd /home/bill/Downloads
+  223  ls
+  224  cd web-main
+  225  ls
+  226  cp apache2.conf /etc/apache2/apache2.conf
+  227  cp var-www-html /var/www/html
+  228  cp var-www-html.tar /var/www/html
+  229  cp usr-lib-cgi-bin.tar /usr/lib/cgi-bin
+  230  systemctl start apache2.service
+  231  apt install alsa-utils
+  232  amixer
+  233  exit
+  234  cd /etc/udev
+  235  ls
+  236  cd hwdb.d
+  237  ls
+  238  udevadm
+  239  xinput
+  240  libinput
+  241  cd /sys/class/dmi
+  242  ls
+  243  cd id
+  244  ls
+  245  cat modalias
+  246  cd /etc/libinput
+  247  libinput ecord
+  248  libinput record
+  249  apt install gpointing-device-settings
+  250  apt install kd-config-touchpad
+  251  cd ,,
+  252  gsettings
+  253  xinput
+  254  cd ..
+  255  apt install libinput
+  256  libinput
+  257  libinput measure touchpad=pressure
+  258  libinput measure touchpad-pressure
+  259  sudo libinput measure touchpad-pressure --touch-thresholds=10:8 --palm-threshold=20
+  260  vi touchpad.txt
+  261  xinput --list
+  262  vi touchpad.txt
+  263  xinput -list
+  264  libinput quirks list
+  265  libinput quirks list /dev/input/event19
+  266  vi touchpad.txt
+  267  libinput record
+  268  vi touchpad.txt
+  269  libinput measure touch-size
+  270  cd /dev/input
+  271  ls
+  272  cd event5
+  273  cat event5
+  274  ls -lta
+  275  libinput measure touch-size
+  276  ls
+  277  cd /home/bill
+  278  ls
+  279  cd /usr/share/libinput
+  280  ls
+  281  cat 30-vendor-elantech.quirks
+  282  cd /usr/libinput
+  283  cd /etc/libinput
+  284  cd /etc
+  285  ls
+  286  mkdir libinput
+  287  cd libinput
+  288  libinput quirks --verbose
+  289  libinput quirks --list
+  290  libinput quirks -list
+  291  libinput quirks
+  292  libinput quirks list
+  293  libinput quirks list /dev/input/event0
+  294  libinput quirks list /dev/input/event1
+  295  libinput quirks list /dev/input/event2
+  296  libinput quirks list /dev/input/event3
+  297  libinput quirks list /dev/input/event4
+  298  libinput quirks list /dev/input/event5
+  299  libinput quirks list --verbose /dev/input/event5
+  300  vi local-overrides.quirks
+  301  cat local-overrides.quirks
+  302  libinput measure touch-size
+  303  libinput measure touchpad-pressure
+  304  ls
+  305  cd /dev
+  306  ls
+  307  cd input
+  308  ls
+  309  libinput list-quirks /dev/input/event0
+  310  apt install list-quirks
+  311  libinput quirks list /dev/input/event0
+  312  cd /etc/libinput
+  313  ls
+  314  rm *
+  315  libinput quirks list /dev/input/event0
+  316  libinput quirks list /dev/input/event1
+  317  libinput quirks list /dev/input/event2
+  318  libinput quirks list /dev/input/event3
+  319  libinput quirks list /dev/input/event4
+  320  libinput quirks list /dev/input/event5
+  321  $ sudo libinput measure touchpad-pressure --touch-thresholds=10:8 --palm-threshold=20
+  322  $ libinput measure touchpad-pressure --touch-thresholds=10:8 --palm-threshold=20
+  323  libinpuy
+  324  libinput
+  325  $ libinput measure touchpad-pressure --touch-thresholds=10:8
+  326  libinput measure touchpad-pressure
+  327  libinput record
+  328  vi local-overrides.quirks
+  329  libinput measure touchpad-pressure
+  330  libinput list-quirks /dev/input5
+  331  libinput quirks list /dev/input/event5
+  332  vi local-overrides.quirks
+  333  libinput quirks list /dev/input/event5
+  334  libinput quirks list -- verbose/dev/input/event5
+  335  libinput quirks list --verbose/dev/input/event5
+  336  libinput quirks list --verbose /dev/input/event5
+  337  linput measure touchpad-pressure
+  338  libinput measure touchpad-pressure
+  339  libinput measure touchpad-threshold
+  340  libinput measure touch-threshold
+  341  libinput measure touch-thresholds
+  342  libinput measure --touch-thresholds
+  343  linput measure touchpad-pressure
+  344  libinput measure touchpad-pressure
+  345  libinput measure touch-thresholds
+  346  libinput measure touch-size
+  347  cd /usr/share
+  348  ls
+  349  cd libinput
+  350  ls
+  351  vi 30-vendor-elantech.quirks
+  352  chmod 777 touchpad.txt
+  353  vi touchpad.txt
+  354  libinput measure touchpad-pressure
+  355  cat touchpad.txt
+  356  apt install vim
+  357  vim
+  358  cheese
+  359  ls
+  360  cd Pictures
+  361  ls
+  362  cd Webcam
+  363  ls
+  364  clear
+  365  cd grub
+  366  vi grub.cfg
+  367  shutdown -r now
+  368  df -h
+  369  lsblk
+  370  df -h
+  371  lsblk
+  372  ls
+  373  cat sound.txt
+  374  gsettings
+  375  apt install pipewire-audio
+  376  apt install pipewire-alsa
+  377  apt install pipewire-pulse
+  378  pactl info
+  379  exit
+  380  /proc/asound/cards
+  381  apt install alsa-utils
+  382  apulse
+  383  amixer
+  384  exit
+  385  apt install CUPS
+  386  apt install cups
+  387  systemctl start cups.service
+  388  ls
+  389  vi sound.txt
+  390  apt install cmus
+  391  cmus
+  392  apt remove cmus
+  393  apt insta;; firmware-sof-signed
+  394  apt install sof-firmware-signed
+  395  apt install firmware-sof-signed
+  396  apt autoremove
+  397  alsa-info
+  398  dmesg
+  399  lsmod
+  400  lsmod | grep snd
+  401  pulseaudio -D
+  402  pulseaudio --system -D
+  403  exit
+  404  history
