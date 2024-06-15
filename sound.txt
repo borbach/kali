@@ -16,6 +16,12 @@ aplay -L
 aplay -l
 Note: You cannot use these utilities as root. Use bill instead
 
+pw-cli list-objects | grep node.name
+pw-link
+pactl list | grep node.name
+aplay --list-devices 
+arecord --list-devices
+
 
 
 for large mouse cursor
