@@ -25,6 +25,8 @@ systemctl --user status pipewire.service pipewire.socket wireplumber
 
 systemctl --user status  pipewire-pulse
 pacmd list-cards
+pavucontrol
+
 
 
 for large mouse cursor
