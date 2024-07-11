@@ -1,0 +1,17 @@
+fdisk /dev/sda
+3 partitions with 83 linux on /dev/sda3
+
+pvcreate /dev/sda3
+
+pvdisplay
+
+vgcreate vg-data /dev/sda3
+
+vgs
+
+lvcreate --name lv-data -l 100%FREE vg-data
+
+lvdisplay /dev/vg-data/lv-data
+
+mkfs.ext4 /dev/vg-data/lv-data
+

@@ -3,29 +3,8 @@ in grub.cfg
 
 linux	/vmlinuz-6.3.0-kali1-amd64 root=/dev/mapper/asus14--vg-root ro single snd_hda_intel.dmic_detect=0 
 
-sudo apt install pipewire-audio
 sudo apt install pipewire-alsa
-sudo apt install pipewire-pulse
 sudo apt install --mark-auto -y pipewire-audio
-pactl info
-
-speaker-test -c 2
-alsamixer
-apt install alsa-utils
-aplay -L
-aplay -l
-Note: You cannot use these utilities as root. Use bill instead
-
-pw-cli list-objects | grep node.name
-pw-link
-pactl list | grep node.name
-aplay --list-devices 
-arecord --list-devices
-systemctl --user status pipewire.service pipewire.socket wireplumber
-
-systemctl --user status  pipewire-pulse
-pacmd list-cards
-pavucontrol
 
 
 
@@ -38,7 +17,4 @@ $ gsettings set org.gnome.desktop.interface cursor-size 96
 for touchpad
 sudo modprobe -r i2c_hid_acpi i2c_hid && sudo modprobe i2c_hid_acpi i2c_hid
 
-for printer:
-apt install cups
-systemctl start cups.service
 
