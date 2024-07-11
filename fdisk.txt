@@ -1,0 +1,6 @@
+Device     Boot     Start       End   Sectors   Size Id Type
+/dev/sda1            3000   1026047   1023048 499.5M ef EFI (FAT-12/16/32)
+/dev/sda2  *      1026100   2050047   1023948   500M 83 Linux
+/dev/sda3         2051000 117393400 115342401    55G 83 Linux
+/dev/sda4       117393500 122157055   4763556   2.3G  5 Extended
+
