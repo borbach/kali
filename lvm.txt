@@ -8,10 +8,17 @@ pvdisplay
 vgcreate vg-data /dev/sda3
 
 vgs
+ 
+vgscan
+
+vgchange -ay 
 
 lvcreate --name lv-data -l 100%FREE vg-data
 
 lvdisplay /dev/vg-data/lv-data
+
+lvs
+
 
 mkfs.ext4 /dev/vg-data/lv-data
 
