@@ -13,6 +13,10 @@ vgscan
 
 vgchange -ay 
 
+vgrename vg vg1
+
+modprobe dm-mod
+
 lvcreate --name lv-data -l 100%FREE vg-data
 
 lvdisplay /dev/vg-data/lv-data
@@ -21,4 +25,9 @@ lvs
 
 
 mkfs.ext4 /dev/vg-data/lv-data
+
+mkinitramfs
+
+
+lsblk
 
