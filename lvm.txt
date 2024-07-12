@@ -28,6 +28,10 @@ mkfs.ext4 /dev/vg-data/lv-data
 
 mkinitramfs
 
+pvremove
+vgremove
+lvremove
+
 
 lsblk
 
