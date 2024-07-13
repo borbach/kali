@@ -32,6 +32,9 @@ pvremove
 vgremove
 lvremove
 
+#To enable root login
+sudo passwd
+sudo apt -y install kali-root-login
 
 lsblk
 
