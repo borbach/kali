@@ -41,3 +41,6 @@ lsblk
 #to change blkid
 tune2fs -U random /dev/sda2
 
+lshw
+
+
