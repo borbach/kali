@@ -53,4 +53,6 @@ findmnt --real to find all real mount
 
 efibootmgr -v
 
+efibootmgr -n 0002 or whatever is the usb boot
+
 
