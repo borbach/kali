@@ -26,7 +26,6 @@ mount --bind /usr /mnt/usr
 mount --bind /lib /mnt/lib
 mount --bind /lib32 /mnt/lib32
 mount --bind /lib64 /mnt/lib64
-mount --bind /lib64 /mnt/lib64
 mount --bind /boot /mnt/boot/
 mount --bind /etc /mnt/etc
 mount --bind /home /mnt/home
@@ -35,8 +34,6 @@ mount --bind /opt /mnt/opt
 mount --bind /root /mnt/root
 mount --bind /srv /mnt/srv
 mount --bind /sys /mnt/sys
-mount --bind /lib64 /mnt/lib64
-mount --bind /lib64 /mnt/lib64
 
 chroot /mnt /bin/zsh
 
