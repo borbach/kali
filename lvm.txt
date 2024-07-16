@@ -49,4 +49,8 @@ mount --bind to mount a directory on another directory
 mount -rbind to mound a direcotry on another directory recursively
 
 
-findmnt --real to find all real mounts
+findmnt --real to find all real mount
+
+efibootmgr -v
+
+
