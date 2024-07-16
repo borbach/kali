@@ -1,6 +1,17 @@
-umount /mnt/proc /mnt/sys /mnt/dev
-umount /mnt/sbin /mnt/bin /mnt/usr
-umount /mnt/lib /mnt/lib32 /mnt/lib64
-umount /mnt/boot /mnt/etc /mnt/home
-umount /mnt/media /mnt/opt /mnt/root
-umount /mnt/srv /mnt/sys 
+umount /mnt/proc
+umount /mnt/sbin 
+umount /mnt/lib 
+umount /mnt/boot 
+umount /mnt/media 
+umount /mnt/srv
+umount /mnt/sys
+umount /mnt/dev
+umount /mnt/bin
+umount /mnt/usr
+umount /mnt/lib32
+umount /mnt/lib54
+umount /mnt/etc
+umount /mnt/home
+umount /mnt/opt
+umount /mnt/root
+umount /mnt/sys
