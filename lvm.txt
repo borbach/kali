@@ -43,12 +43,10 @@ tune2fs -U random /dev/sda2
 
 lshw
 
-gsettings set org.gnome.desktop.interface cursor-size 96
-                                                                                                                                                                                              
-┌──(bill㉿asus14)-[~]
-└─$ gsettings get org.gnome.desktop.interface cursor-size   
-
-
 testdisk
+
+gsettings get org.gnome.desktop.interface cursor-size
+
+gsettings set org.gnome.desktop.interface cursor-size 64
 
 
