@@ -43,16 +43,6 @@ tune2fs -U random /dev/sda2
 
 lshw
 
-findmnt
-
-mount --bind to mount a directory on another directory
-mount -rbind to mound a direcotry on another directory recursively
-
-
-findmnt --real to find all real mount
-
-efibootmgr -v
-
-efibootmgr -n 0002 or whatever is the usb boot
+testdisk
 
 
