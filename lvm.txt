@@ -49,4 +49,5 @@ gsettings get org.gnome.desktop.interface cursor-size
 
 gsettings set org.gnome.desktop.interface cursor-size 64
 
+dumpe2fs /dev/sda
 
