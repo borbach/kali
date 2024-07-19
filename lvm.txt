@@ -38,16 +38,10 @@ sudo apt -y install kali-root-login
 
 lsblk -f
 
+
 #to change blkid
 tune2fs -U random /dev/sda2
 
-lshw
-
 testdisk
 
-gsettings get org.gnome.desktop.interface cursor-size
-
-gsettings set org.gnome.desktop.interface cursor-size 64
-
-dumpe2fs /dev/sda
 
