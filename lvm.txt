@@ -36,7 +36,7 @@ lvremove
 sudo passwd
 sudo apt -y install kali-root-login
 
-lsblk
+lsblk -f
 
 #to change blkid
 tune2fs -U random /dev/sda2
