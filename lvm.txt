@@ -44,4 +44,8 @@ tune2fs -U random /dev/sda2
 
 testdisk
 
+to increase brighness
+apt install brightnessctl
+
+brightnessctl s +100
 
