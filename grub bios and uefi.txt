@@ -43,3 +43,9 @@ mount /dev/sda4 /mnt/root
 copy all the linux files to /mnt/root or dd the / partition for a working linux system.
 edit the /etc/fstab file to have the correct partition ids.
 
+
+https://www.normalesup.org/~george/comp/live_iso_usb/grub_hybrid.html
+https://www.normalesup.org/~george/comp/live_iso_usb/
+
+
+
