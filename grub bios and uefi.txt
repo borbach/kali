@@ -2,8 +2,9 @@ First download the required files:
 Sudo apt install grub-pc
 Sudo apt install grub-efi-amd64
 You should also get an i386-efi grub module if it is available
+This may have to be done on different computers,depending on the configuration of the computer, such as a BIOS computer with MBR, a UEFI computer with GPT, etc.
 
-Then use GPT for create 4 partitions, a 2 M partition on the sector closest to the beginning of the disk - 2048 but prefer it to be 1.
+Then use gdisk to create 4 partitions, a 2 M partition on the sector closest to the beginning of the disk - 2048 but prefer it to be 1.
 Then an EFI partition of 500M
 Then a boot partition of 500M
 Then a data partition of the rest of the disk.
