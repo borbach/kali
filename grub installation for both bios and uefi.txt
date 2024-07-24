@@ -1,5 +1,7 @@
 ﻿First download the required files:
+On the asus14 (BIOS) computer do the following:
 Sudo apt install grub-pc
+On the asus16 computer (UEFI) do the following:
 Sudo apt install grub-efi-amd64
 You should also get an i386-efi grub module if it is available
 This may have to be done on different computers,depending on the configuration of the computer, such as a BIOS computer with MBR, a UEFI computer with GPT, etc.
@@ -24,13 +26,13 @@ mount /dev/sda3 /mnt/boot
 mkdir /mnt/boot/boot
 mount /dev/sda2 /mnt/efi
 
-
+Make sure the target sd card is on the asus-16 (UEFI) cpmputer when you type the following
 grub-install --target=x86_64-efi --removable --no-nvram \
   --root-directory=/mnt/boot \
   --boot-directory=/mnt/boot/boot \
   --efi-directory=/mnt/efi
 
-
+Make sure that the target SD card is on the asus14 (BIOS) computer when you do the following:
 grub-install --target=i386-efi --removable --no-nvram \
   --root-directory=/mnt/boot \
   --boot-directory=/mnt/boot/boot \
