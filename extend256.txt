@@ -15,3 +15,55 @@ mkfs /dev/sdc5
 mkfs /dev/sdc6
 dd if=/dev/sdb4 of=/dev/sdc5 bs=4M status=progress
 dd if=/dev/sdb5 of=/dev/sdc6 bs=4M status=progress
+create 1 logical partition - partition 5 for the entire rest of the disk
+mkfs.ext4 /dev/sdc5
+then mount /dev/sdc5 (or whatever the new partition name) on mnt
+create all the directories in the root file system
+cd /mnt/bin
+cp -av /bin/* .
+cd /mnt/home
+cp -av /home/* .
+do this for all the directories except /proc
+change /etc/fstab to include the new root directory as follows:
+
+# /etc/fstab: static file system information.
+#
+# Use 'blkid' to print the universally unique identifier for a
+# device; this may be used with UUID= as a more robust way to name devices
+# that works even if disks are added and removed. See fstab(5).
+#
+# systemd generates mount units based on this file, see systemd.mount(5).
+# Please run 'systemctl daemon-reload' after making changes here.
+#
+# <file system> <mount point>   <type>  <options>       <dump>  <pass>
+#/dev/mapper/asus14--vg-root /               ext4    errors=remount-ro 0       1
+UUID=30812f51-8bbd-43bd-b471-fcc45b5db1f3 /               ext4    errors=remount-ro 0       1
+# /boot was on /dev/mmcblk1p1 during installation
+UUID=c6e2c45d-ea84-4dcb-9b17-9b09b58ea81f  /boot           ext2    defaults        0       2
+#/dev/mapper/asus14--vg-swap_1 none            swap    sw              0       0
+
+In addition the grub.cfg file should be as follows:
+
+
+menuentry 'Kali GNU/Linux' --class kali --class gnu-linux --class gnu --class os $menuentry_id_option 'gnulinux-simple-6b8653b2-603b-43d2-9add-6cd6587c343e' {
+	load_video
+	insmod gzio
+	if [ x$grub_platform = xxen ]; then insmod xzio; insmod lzopio; fi
+	insmod part_gpt
+	insmod ext2
+	set root='hd0,msdos1'
+	if [ x$feature_platform_search_hint = xy ]; then
+	  search --no-floppy --fs-uuid --set=root --hint-bios=hd0,msdos1 --hint-efi=hd0,msdos1 --hint-baremetal=ahci0,gpt2 c6e2c45d-ea84-4dcb-9b17-9b09b58ea81f 
+	else
+	  search --no-floppy --fs-uuid --set=root c6e2c45d-ea84-4dcb-9b17-9b09b58ea81f
+	fi
+	echo	'Loading Linux 6.8.11-amd64 ...'
+#	linux	/vmlinuz-6.8.11-amd64 root=/dev/mapper/asus14--vg-root ro single splash
+	linux	/vmlinuz-6.8.11-amd64 root=UUID=30812f51-8bbd-43bd-b471-fcc45b5db1f3 ro single splash
+	echo	'Loading initial ramdisk ...'
+	initrd	/initrd.img-6.8.11-amd64
+}
+
+also do ln -s for initrd.img and vmlinuz files
+ln -s initird.img /boot/initrd.img....
+
