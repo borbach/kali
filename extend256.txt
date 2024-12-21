@@ -1,0 +1,16 @@
+dd the entire disk
+dd if=/dev/sdb of=/dev/sdc bs=4M status=progress
+fdisk /dev/sdc
+p
+d parition 5
+d partition 4
+d partion 3
+n partition 3 extended
+n partitoon 5 +100G
+n partition 6 
+delete everything but the boot and UEFI partitions
+create new extended partition - parition 3
+create 2 new logical partitions - partition 5 and 6
+dd if=/dev/sdb4 of=/dev/sdc5 bs=4M status=progress
+dd if=/dev/sdb5 of=/dev/sdc6 bs=4M status=progress
+
