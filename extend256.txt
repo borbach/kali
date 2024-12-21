@@ -23,7 +23,7 @@ cd /mnt/bin
 cp -av /bin/* .
 cd /mnt/home
 cp -av /home/* .
-do this for all the directories except /proc
+do this for all the directories except /proc and /sys
 change /etc/fstab to include the new root directory as follows:
 
 # /etc/fstab: static file system information.
