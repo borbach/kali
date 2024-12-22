@@ -109,4 +109,37 @@ sleep 10
 You may also have to delete /dev/mmcblk1p7 in fdisk and recreate it. In addition, you probably need to:
 mkfs.ext4 /dev/mmcblk1p7
 
+So in order to create a 256GB disk from a 65 GB one, you can use fdisk to create a primary boot partiotn of about 500MB and a primary UEFI partiton of about 500 MB.
+Then create an extended partition for the rest of the disk.
+create 2 more primary partitions, each about 30 GB as partitons 5 and 6.
+You can also create another 7th partition for the rest of the disk, although you may have to delete it later in fdisk.
+
+Then dd each parition separately to the corresponding partition on the 256 GB target disk
+dd if=/dev/sdb1 of=/dev/sdc1 bs=4M status=progress for the boot partition
+dd if=/dev/sdb2 of=/dev/sdc2 bs=4M status=progress for the UEFI partition
+dd if=/dev/sdb4 of=/dev/sdc5 bs=4M status=progress for the first root partition
+dd if=/dev/sdb5 of=/dev/sdc6 bs=4M status=progress for the second root partition
+
+Then you can use a combination of the following commands:
+
+
+fdisk -l
+fdisk /dev/mmcblk1
+fdisk -l
+pvdisplay
+pvcreate /dev/mmcblk1p7
+pvdisplay
+vgdisplay | grep Name
+vgextend asus14-vg /dev/mmcblk1p7
+vgdisplay
+lvdisplay | grep Path
+lvextend -l +100%FREE /dev/asus14-vg/root
+lvdisplay
+resize2fs /dev/asus14-vg/root
+df -lh
+
+
+You may have to use fdisk /dev/mmcblk1 to create and/or delete the 7th partition.
+You may also need mkfs.ext4 /dev/mmcblk1p7
+
 
