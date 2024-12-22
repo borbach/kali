@@ -67,3 +67,13 @@ menuentry 'Kali GNU/Linux' --class kali --class gnu-linux --class gnu --class os
 also do ln -s for initrd.img and vmlinuz files
 ln -s initird.img /boot/initrd.img....
 
+In the final analysis, use fdisk to create the boot and UEFI partitions and dd the boot and UEFI partitions to them.
+Then create an extended partition with the rest of the disk space.
+create 2 30 GB partitions, usually 5 and 6.
+Then create a 7th partition with the rest of the disk size.
+DD the 4th partition of the source to the 5th partition of the target
+DD the 5th partition of the source to the 6th partition of the target
+make sure to mkfs.ext4 /dev/sdc7 - the 7th partition
+
+
+
