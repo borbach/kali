@@ -106,5 +106,7 @@ df -lh
 sleep 10
 
 
+You may also have to delete /dev/mmcblk1p7 in fdisk and recreate it. In addition, you probably need to:
+mkfs.ext4 /dev/mmcblk1p7
 
 
