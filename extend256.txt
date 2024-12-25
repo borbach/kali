@@ -153,6 +153,11 @@ For example, use the command pvremove /dev/ram15.
 Check if used by logical volumes
 Before removing a physical volume, use the pvdisplay command to ensure it is not used by any logical volumes. 
 Restore volume group metadata
-If you make a mistake, you can use the vgcfgrestore command to restore the volume group metadata to its previous state. 
+If you make a mistake, you can use the vgcfgrestore command to restore the volume group metadata to its previous state14-vg
+
+vgremove asus14-vg
+ 
+vgcreate asus14-vg /dev/sdc5 /dev/sdc6 /dev/sdc7
+lvcreate -L231.7G -n root asus14-vg
 
 
