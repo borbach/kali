@@ -142,4 +142,17 @@ df -lh
 You may have to use fdisk /dev/mmcblk1 to create and/or delete the 7th partition.
 You may also need mkfs.ext4 /dev/mmcblk1p7
 
+Yes, you can delete physical volumes in Linux, but you must first remove them from any volume groups they are part of: 
+Remove from a volume group
+Use the vgreduce command to remove a physical volume from a volume group: 
+If the volume group has more than one physical volume, use the command vgreduce VolumeGroupName /dev/sdb1. 
+If the volume group has only one physical volume, use the command vgremove VolumeGroupName. 
+Remove the LVM label
+Use the pvremove command to remove the LVM label from a physical volume: 
+For example, use the command pvremove /dev/ram15. 
+Check if used by logical volumes
+Before removing a physical volume, use the pvdisplay command to ensure it is not used by any logical volumes. 
+Restore volume group metadata
+If you make a mistake, you can use the vgcfgrestore command to restore the volume group metadata to its previous state. 
+
 
