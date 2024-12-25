@@ -160,4 +160,12 @@ vgremove asus14-vg
 vgcreate asus14-vg /dev/sdc5 /dev/sdc6 /dev/sdc7
 lvcreate -L231.7G -n root asus14-vg
 
+pvresize
+resize2fs
+
+vgscan
+lvscan
+lvextend
+
+
 
