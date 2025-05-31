@@ -1,3 +1,16 @@
+Objective: To have the Linux system boot from the USB port but then hand over control to the SD Card as root.
+Problem: Since all SD Cards are dd's from each other, they will all have the same UUID.
+Solution: Use blkid to get the UUID of the system. 
+Then change the UUID of the SD card to a new one with "tune2fs -U random /dev/mapper/asus16--vg-root".
+You may need to use e2fsck on this as well.
+Once you have the new UUID number, insert it into /boot/boot/grub/grub.cfg as follows:
+	linux	/vmlinuz-6.8.11-amd64 root=UUID="52e7a5bb-ce2c-4f32-a9c5-19e59ecd2082" ro single splash
+This will be on the USB stick.
+You may also need to check the /etc/fstab for the new UUID, if it uses UUIDs.
+You will need to change it to the new UUID and this will be on the SD Card.
+
+
+
 ####df -h
 Filesystem                   Size  Used Avail Use% Mounted on
 udev                         3.8G     0  3.8G   0% /dev
@@ -324,3 +337,21 @@ elif [ -z "${config_directory}" -a -f  $prefix/custom.cfg ]; then
   source $prefix/custom.cfg
 fi
 ### END /etc/grub.d/41_custom ###
+
+####/etc/fstab
+# /etc/fstab: static file system information.
+#
+# Use 'blkid' to print the universally unique identifier for a
+# device; this may be used with UUID= as a more robust way to name devices
+# that works even if disks are added and removed. See fstab(5).
+#
+# systemd generates mount units based on this file, see systemd.mount(5).
+# Please run 'systemctl daemon-reload' after making changes here.
+#
+# <file system> <mount point>   <type>  <options>       <dump>  <pass>
+#UUID=becf42b4-075c-4329-a9d7-69e97f1a62bb /               ext4    errors=remount-ro 0       1
+UUID=52e7a5bb-ce2c-4f32-a9c5-19e59ecd2082 /                ext4    errors=remount-ro 0       1
+#UUID=becf42b4-075c-4329-a9d7-69e97f1a62bb /               ext4    errors=remount-ro 0       1
+# /boot was on /dev/mmcblk1p1 during installation
+UUID=c6e2c45d-ea84-4dcb-9b17-9b09b58ea81f  /boot           ext2    defaults        0       2
+#/dev/mapper/asus14--vg-swap_1 none            swap    sw              0       0
