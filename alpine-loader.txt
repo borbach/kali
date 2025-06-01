@@ -1,0 +1,61 @@
+To use the alpine linux system in a usb port to throw control to kali linux on a sd card, do the following.
+1. Place a kali linux sd card in the sd card slot.
+2. gdisk the alpine sd card, creating a GPT and use n to create one partition of type EFI efoo.
+3. Go to expert attributes and make it a legacy BIOS boot.
+4. Write the result.
+5. mkfs.vfat -F 32 /dev/sda or whatever.
+6. Download the alpine iso.
+7. Copy it to an alpine directory.
+7. 7zip it out 7z x alpine.iso
+8. copy the kali /boot/initrd.img and vmlinuz files to the boot directory in the alpine directory.
+9. blkid to get the root UUID of the kali linux sd card.
+10. Place it in the grub.cfg file as follows:
+6. Download the alpine iso.
+7. Copy it to an alpine directory.
+7. 7zip it out 7z x alpine.iso
+8. copy the kali /boot/initrd.img and vmlinuz files to the boot directory in the alpine directory.
+9. blkid to get the root UUID of the kali linux sd card.
+10. Place it in the grub.cfg file as follows:
+6. Download the alpine iso.
+7. Copy it to an alpine directory.
+7. 7zip it out 7z x alpine.iso
+8. copy the kali /boot/initrd.img and vmlinuz files to the boot directory in the alpine directory.
+9. blkid to get the root UUID of the kali linux sd card.
+10. Place it in the grub.cfg file as follows:
+6. Download the alpine iso.
+7. Copy it to an alpine directory.
+7. 7zip it out 7z x alpine.iso
+8. copy the kali /boot/initrd.img and vmlinuz files to the boot directory in the alpine directory.
+9. blkid to get the root UUID of the kali linux sd card.
+10. Place it in the grub.cfg file as follows:
+6. Download the alpine iso.
+7. Copy it to an alpine directory.
+7. 7zip it out 7z x alpine.iso
+8. copy the kali /boot/initrd.img and vmlinuz files to the boot directory in the alpine directory.
+9. blkid to get the root UUID of the kali linux sd card.
+10. Place it in the grub.cfg file as follows:
+6. Download the alpine iso.
+7. Copy it to an alpine directory.
+7. 7zip it out 7z x alpine.iso
+8. copy the kali /boot/initrd.img and vmlinuz files to the boot directory in the alpine directory.
+9. Rename them to vmlinuz-kali and initrd.img.kali.
+10. blkid to get the root UUID of the kali linux sd card.
+11. Place it in the grub.cfg file as follows:
+
+set timeout=10
+
+menuentry "Linux lts" {
+linux	/boot/vmlinuz-lts modules=loop,squashfs,sd-mod,usb-storage  
+initrd	/boot/intel-ucode.img /boot/amd-ucode.img /boot/initramfs-lts
+}
+menuentry "Kali Linux" {
+linux	/boot/vmlinuz-kali root=UUID=becf42b4-075c-4329-a9d7-69e97f1a62bb modules=loop,squashfs,sd-mod,usb-storage  
+initrd	/boot/initrd.img.kali
+}
+
+12. mount /dev/sda1 /mnt/root
+13. Remove the alpine.iso file from the alpine directory.
+14. cp -r /home/bill/Downloads/alpine/* /mnt/root
+ 
+
+
