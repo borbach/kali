@@ -1,10 +1,19 @@
-set timeout=0
+set timeout=5
+set default=1
 
 #menuentry "Linux lts" {
 #linux	/boot/vmlinuz-lts modules=loop,squashfs,sd-mod,usb-storage  
 #initrd	/boot/intel-ucode.img /boot/amd-ucode.img /boot/initramfs-lts
 #}
-menuentry "Kali Linux" {
+menuentry "Kali Linux with UUID" {
+echo "Loading vmlinuz with UUUID..."
 linux	/boot/vmlinuz-kali root=UUID=becf42b4-075c-4329-a9d7-69e97f1a62bb modules=loop,squashfs,sd-mod,usb-storage  
+echo "Loading image file with UUID..."
+initrd	/boot/initrd.img.kali
+}
+menuentry "Kali Linuxi with /dev/mmcblk0p3" {
+echo "Loading vmlinuz with /dev/mmcblk0p3..."
+linux	/boot/vmlinuz-kali root=/dev/mmcblk0p3 modules=loop,squashfs,sd-mod,usb-storage  
+echo "Loading image file with /dev/mmcblk0p3..."
 initrd	/boot/initrd.img.kali
 }
