@@ -42,12 +42,12 @@ To use the alpine linux system in a usb port to throw control to kali linux on a
 10. blkid to get the root UUID of the kali linux sd card.
 11. Place it in the grub.cfg file as follows:
 
-set timeout=10
+set timeout=0
 
-menuentry "Linux lts" {
-linux	/boot/vmlinuz-lts modules=loop,squashfs,sd-mod,usb-storage  
-initrd	/boot/intel-ucode.img /boot/amd-ucode.img /boot/initramfs-lts
-}
+#menuentry "Linux lts" {
+#linux	/boot/vmlinuz-lts modules=loop,squashfs,sd-mod,usb-storage  
+#initrd	/boot/intel-ucode.img /boot/amd-ucode.img /boot/initramfs-lts
+#}
 menuentry "Kali Linux" {
 linux	/boot/vmlinuz-kali root=UUID=becf42b4-075c-4329-a9d7-69e97f1a62bb modules=loop,squashfs,sd-mod,usb-storage  
 initrd	/boot/initrd.img.kali
