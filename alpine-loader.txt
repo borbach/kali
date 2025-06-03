@@ -72,4 +72,13 @@ Also remember to remove the snapd daemon with "apt purge snapd"
 and rm -rf anaconda3 from the /home/bill directory.
 
 
+If you wish to use an U/EFI multi-boot USB key, you MUST:
+
+clear all partitions/wipe drive entirely;
+convert it to GPT;
+create a primary partition and format it as Fat32;
+make a dir called EFI (not case sensitive) in the root of the drive;
+create a subdir in previous dir called boot (not case sensitive, too)
+put your desired .efi file in there and rename it to match the system's architecture: bootx64.efi if x64, bootia32.efi if x86 or bootaa64.efi if ARM64.
+
 
