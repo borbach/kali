@@ -69,5 +69,6 @@ mount /dev/sda4 /mnt/root
 copy all the linux files to /mnt/root or dd the / partition for a working linux system.
 edit the /etc/fstab file to have the correct partition ids.
 
-If there is a problem with no sound use systemctl restart --user wireplumber.service
+If there is a problem with no sound, first use alsamixer <F6> to choose the sound card, then make sure to unmute all speakers and headphone with M and increase the volume with arrow keys.
+Then use "systemctl restart --user wireplumber.service"
 
