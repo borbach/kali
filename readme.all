@@ -1,0 +1,63 @@
+
+﻿First download the required files:
+On the asus14 (BIOS) computer do the following:
+Sudo apt install grub-pc
+On the asus16 computer (UEFI) do the following:
+Sudo apt install grub-efi-amd64
+You should also get an i386-efi grub module if it is available
+This may have to be done on different computers,depending on the configuration of the computer, such as a BIOS computer with MBR, a UEFI computer with GPT, etc.
+
+
+Then use gdisk to create 4 partitions, a 2 M partition on the sector closest to the beginning of the disk - 2048 but prefer it to be 1.
+Then an EFI partition of 500M
+Then a boot partition of 500M
+Then a data partition of the rest of the disk.
+In addition to the GPT, also create an MBR in the expert menu of GPT and include the first 3 partitions.
+
+
+Mkfs.vfat /dev/sda1
+Mkfs.vfat /dev/sda2
+Mkfs.vfat /dev/sda3
+Mkfs.ext4 /dev/sda4
+
+
+
+
+mount /dev/sda3 /mnt/boot
+mkdir /mnt/boot/boot
+mount /dev/sda2 /mnt/efi
+
+Make sure the target sd card is on the asus-16 (UEFI) cpmputer when you type the following
+grub-install --target=x86_64-efi --removable --no-nvram \
+  --root-directory=/mnt/boot \
+  --boot-directory=/mnt/boot/boot \
+  --efi-directory=/mnt/efi
+
+Make sure that the target SD card is on the asus14 (BIOS) computer when you do the following:
+grub-install --target=i386-efi --removable --no-nvram \
+  --root-directory=/mnt/boot \
+  --boot-directory=/mnt/boot/boot \
+  --efi-directory=/mnt/efi
+
+
+grub-install --target=i386-pc \
+  --root-directory=/mnt/boot \
+  --boot-directory=/mnt/boot/boot \
+  /dev/sdc
+
+
+umount /mnt/efi
+copy the /boot/grub/grub.cfg file to /mnt/boot/boot/grub
+You need to change the grub.cfg file to have the right partition identifiers and also edit the /etc/fstab which will be in /mnt/root
+
+
+mount /dev/sda4 /mnt/root
+
+
+copy all the linux files to /mnt/root or dd the / partition for a working linux system.
+edit the /etc/fstab file to have the correct partition ids.
+
+If there is a problem with no sound use systemctl restart --user wireplumber.service
+
+
+
