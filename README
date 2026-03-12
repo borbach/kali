@@ -92,3 +92,64 @@ Once you find the grub.cfg file, tell GRUB where it is and boot:
 grub> set root=(hd0,gpt2)
 grub> configfile /boot/grub/grub.cfg
 
+The most common cause of dropping to the GRUB command line even when grub.cfg exists is that the search command in grub.cfg is looking for a UUID that BIOS GRUB can't find. Paste the output and we can fix it.
+
+
+The typical fix looks like changing from:
+
+search --no-floppy --fs-uuid --set=root XXXX-XXXX
+To:
+
+search --no-floppy --file --set=root /boot/grub/grub.cfg
+Or even simpler, just hardcode the root to whichever partition number you found worked at the GRUB command line:
+
+set root=(hd0,gpt2)
+
+The key change is replacing all the UUID-based search lines with:
+
+search --no-floppy --file --set=root /boot/grub/grub.cfg
+This finds the root partition by looking for a known file rather than a UUID, so it works regardless of which drive number the USB gets assigned on any machine — BIOS or UEFI.
+
+Note that the linux and initrd lines still use root=UUID=... which is fine — that's the kernel parameter and works independently of GRUB's root detection.
+There it is. The only changes from your original are that every occurrence of:
+
+search --no-floppy --fs-uuid --set=root --hint-bios=... --hint-efi=... 77d2dbc4-...
+and:
+
+search --no-floppy --fs-uuid --set=root 77d2dbc4-...
+has been replaced with:
+
+search --no-floppy --file --set=root /boot/grub/grub.cfg
+To apply it, on your USB (replace with your actual mount point):
+
+bash
+sudo parted /dev/sdX print free
+If you see free space after the last partition, we can create the bios_grub partition there:
+
+bash
+sudo parted /dev/sdX unit MiB print free
+This will show the exact start and end positions in MiB. Paste the output and I'll give you the exact numbers to use for mkpart.
+
+
+bash
+sudo parted /dev/sdX
+```
+
+Inside parted:
+```
+(parted) mkpart primary 59345MiB 59347MiB
+(parted) set 2 bios_grub on        # replace 2 with the new partition number
+(parted) print
+(parted) quit
+Then:
+
+bash
+sudo grub-install --target=i386-pc --boot-directory=/mnt/usb/boot /dev/sdX
+
+
+bash
+sudo cp iwlwifi-7265D-2*.ucode /lib/firmware/
+sudo modprobe -r iwlwifi && sudo modprobe iwlwifi
+ip link show
+
+
