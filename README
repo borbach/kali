@@ -73,3 +73,22 @@ If there is a problem with no sound, first use alsamixer <F6> to choose the soun
 Then use "systemctl restart --user wireplumber.service"
 
 If when you boot it stops and you get intramfs> prompt then simply do fsck /dev/sd(abc) or whatever and reply y to all prompts. When it completes, the type exit.
+
+
+That means GRUB loaded successfully but can't find its configuration file (grub.cfg).
+
+At the GRUB command line, first let's find where your files are:
+
+grub> ls
+This will show you available drives like (hd0,gpt1), (hd0,gpt2) etc. Then look for your boot partition:
+
+grub> ls (hd0,gpt1)/
+grub> ls (hd0,gpt2)/
+Keep trying each partition until you find the one with a boot or grub directory. Then:
+
+grub> ls (hd0,gpt2)/boot/grub/
+Once you find the grub.cfg file, tell GRUB where it is and boot:
+
+grub> set root=(hd0,gpt2)
+grub> configfile /boot/grub/grub.cfg
+
