@@ -72,3 +72,4 @@ edit the /etc/fstab file to have the correct partition ids.
 If there is a problem with no sound, first use alsamixer <F6> to choose the sound card, then make sure to unmute all speakers and headphone with M and increase the volume with arrow keys.
 Then use "systemctl restart --user wireplumber.service"
 
+If when you boot it stops and you get intramfs> prompt then simply do fsck /dev/sd(abc) or whatever and reply y to all prompts. When it completes, the type exit.
